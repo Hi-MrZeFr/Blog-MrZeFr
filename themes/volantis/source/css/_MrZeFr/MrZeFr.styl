@@ -1,0 +1,159 @@
+/* 全局默认鼠标指针 */
+body,
+html{
+  cursor: url('https://cdn.jsdelivr.net/gh/SYSTEMWindows11/File@main/normal.cur'),auto !important;
+}
+/* 悬停图片时的鼠标指针 */
+img{
+  cursor: url('https://cdn.jsdelivr.net/gh/SYSTEMWindows11/File@main/link.cur'),auto !important;
+}
+/* 选择链接标签时的鼠标指针 */
+a:hover{
+    cursor: url('https://cdn.jsdelivr.net/gh/SYSTEMWindows11/File@main/link.cur'),auto;
+}
+/* 选中输入框时的鼠标指针 */
+input:hover{
+    cursor: url('https://cdn.jsdelivr.net/gh/SYSTEMWindows11/File@main/text.cur'),auto;
+}
+/* 悬停按钮时的鼠标指针 */
+button:hover{
+    cursor: url('https://cdn.jsdelivr.net/gh/SYSTEMWindows11/File@main/alt.cur'),auto;
+}
+/* 悬停列表标签时的鼠标指针 */
+i:hover{
+    cursor: url('https://cdn.jsdelivr.net/gh/SYSTEMWindows11/File@main/link.cur'),auto;
+}
+/* 悬停页脚链接标签（例如页脚徽标）时的鼠标指针 */
+#footer-wrap a:hover{
+      cursor: url('https://cdn.jsdelivr.net/gh/SYSTEMWindows11/File@main/link.cur'),auto;
+}
+/* 悬停页码时的鼠标指针 */
+#pagination .page-number:hover{
+      cursor: url('https://cdn.jsdelivr.net/gh/SYSTEMWindows11/File@main/alt.cur'),auto;
+}
+/* 悬停菜单栏时的鼠标指针 */
+#nav .site-page:hover{
+      cursor: url('https://cdn.jsdelivr.net/gh/SYSTEMWindows11/File@main/link.cur'),auto;
+}
+
+.l_header
+  @media screen and (max-width: $device-2k)
+    left: 0 !important
+    border-radius: 0 !important
+    max-width: 100% !important
+
+.article a:not([class]):not([data-fancybox]),
+.content > a
+  position: relative
+  text-decoration: none
+  &:before
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px
+    height: 1px
+    width: 100%
+    background: #ff5722
+    transform: scale(0)
+    transition: all 0.5s
+  &:hover:before
+    transform: scale(1)
+
+//===========================
+// link-effects
+// 阅读更多的样式
+//===========================
+.link-fx-1 {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: auto; // !important - set fixed height
+  right: 10px;
+  padding: 0 6px;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale
+
+  .icon {
+    width: 1.5rem;
+    position: absolute;
+    right: 0;
+    bottom: 1.5px;
+    -webkit-transform: translateX(100%) rotate(90deg);
+    transform: translateX(100%) rotate(90deg);
+
+    circle {
+      stroke-dasharray: 100;
+      stroke-dashoffset: 100;
+      transition: stroke-dashoffset .2s;
+    }
+
+    line {
+      transition: -webkit-transform .4s;
+      transition: transform .4s;
+      transition: transform .4s,-webkit-transform .4s;
+      -webkit-transform-origin: 13px 15px;
+      transform-origin: 13px 15px
+    }
+
+    line:last-child {
+      -webkit-transform-origin: 19px 15px;
+      transform-origin: 19px 15px
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: currentColor;
+    -webkit-transform-origin: right center;
+    transform-origin: right center;
+    transition: -webkit-transform .2s .1s;
+    transition: transform .2s .1s;
+    transition: transform .2s .1s,-webkit-transform .2s .1s
+  }
+
+  &:hover {
+    .icon {
+      circle {
+        stroke-dashoffset: 200;
+        transition: stroke-dashoffset .2s .1s;
+      }
+
+      line {
+        -webkit-transform: rotate(-180deg);
+        transform: rotate(-180deg)
+      }
+
+      line:last-child {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg)
+      }
+    }
+
+    &::before {
+      -webkit-transform: translateX(17px) scaleX(0);
+      transform: translateX(17px) scaleX(0);
+      transition: -webkit-transform .2s;
+      transition: transform .2s;
+      transition: transform .2s,-webkit-transform .2s
+    }
+  }
+}
+
+article#post
+  & > h1,h2,h3
+    font-weight: 700
+    background: linear-gradient(to bottom,transparent 60%,rgba(189,202,219,.3) 0) no-repeat
+    display: initial
+    width: auto
+    border-bottom: none
+  & > h3
+    font-weight: 500
+    position: initial
+     
+    

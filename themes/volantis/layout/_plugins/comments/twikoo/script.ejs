@@ -1,0 +1,36 @@
+<script>
+  volantis.layoutHelper("comments",`<div id="twikoo_container"><i class="fas fa-cog fa-spin fa-fw fa-2x"></i></div>`)
+  function load_twikoo() {
+    if(!document.querySelectorAll("#twikoo_container")[0])return;
+    volantis.js("<%- theme.comments.twikoo.js || 'https://cdn.mrzefr.cn/Volantis/JS/twikoo.min.js' %>", pjax_twikoo)
+  }
+  function pjax_twikoo() {
+    if(!document.querySelectorAll("#twikoo_container")[0])return;
+    let path = pdata.commentPath;
+    let placeholder = pdata.commentPlaceholder || "<%= theme.comments.twikoo.placeholder %>" || "";
+    if (path.length == 0) {
+      let defaultPath = '<%= theme.comments.twikoo.path %>';
+      path = defaultPath || decodeURI(window.location.pathname); //神奇的pathname
+    }
+    twikoo.init(Object.assign(Object.assign(<%- JSON.stringify(theme.comments.twikoo) %>, {
+      el: '#twikoo_container',
+      path: path,
+      placeholder: placeholder,
+      onCommentLoaded: function() {
+        const checkFancyBox = setInterval(() => {
+          if(typeof volantisFancyBox === "undefined") return;
+          clearInterval(checkFancyBox);
+          volantisFancyBox.reloadFancyBox('.tk-content img:not([class*="emo"])', 'Comments');
+        })
+      }
+    }),pdata.commentConfig))
+  }
+  load_twikoo();
+  volantis.pjax.push(()=>{
+    if (typeof twikoo == "undefined") {
+      load_twikoo();
+    } else {
+      pjax_twikoo();
+    }
+  },'twikoo');
+</script>
